@@ -2,6 +2,14 @@ import streamlit as st
 import pickle
 import string
 import nltk
+
+# ---------------------- Download required NLTK data ----------------------
+for pkg in ['punkt', 'stopwords']:
+    try:
+        nltk.data.find(f'tokenizers/{pkg}' if pkg == 'punkt' else f'corpora/{pkg}')
+    except LookupError:
+        nltk.download(pkg)
+
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
@@ -57,9 +65,10 @@ if st.button('🔍 Predict'):
         # 3. Predict
         result = model.predict(vector_input)[0]
 
-        # 4. Display with simple emojis
+        # 4. Display result
         if result == 1:
             st.markdown("🚨 **Spam Message Detected!**")
         else:
             st.markdown("✅ **Not Spam — Safe Message!**")
+
 
