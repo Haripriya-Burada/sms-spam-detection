@@ -1,14 +1,21 @@
 import streamlit as st
 import pickle
 import string
+import os
 import nltk
 
-# ---------------------- Download required NLTK data ----------------------
-for pkg in ['punkt', 'stopwords']:
+# ---------------------- NLTK setup for Streamlit ----------------------
+# Create a directory for NLTK data
+nltk_data_dir = os.path.join(os.getcwd(), "nltk_data")
+os.makedirs(nltk_data_dir, exist_ok=True)
+nltk.data.path.append(nltk_data_dir)
+
+# Download required NLTK resources
+for pkg in ['punkt', 'punkt_tab', 'stopwords']:
     try:
-        nltk.data.find(f'tokenizers/{pkg}' if pkg == 'punkt' else f'corpora/{pkg}')
+        nltk.data.find(f'tokenizers/{pkg}' if pkg in ['punkt', 'punkt_tab'] else f'corpora/{pkg}')
     except LookupError:
-        nltk.download(pkg)
+        nltk.download(pkg, download_dir=nltk_data_dir)
 
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
@@ -40,14 +47,12 @@ def transform_text(text):
 
     return " ".join(y)
 
-
 # ---------------------- Load Model ----------------------
 tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
 model = pickle.load(open('model.pkl', 'rb'))
 
 # ---------------------- Streamlit App UI ----------------------
 st.set_page_config(page_title="SMS Spam Classifier", page_icon="📩", layout="centered")
-
 st.title("📩 Email/SMS Spam Classifier")
 
 input_sms = st.text_area("✉️ Enter the message")
@@ -70,5 +75,7 @@ if st.button('🔍 Predict'):
             st.markdown("🚨 **Spam Message Detected!**")
         else:
             st.markdown("✅ **Not Spam — Safe Message!**")
+
+
 
 
