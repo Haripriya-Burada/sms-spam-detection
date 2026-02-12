@@ -18,3 +18,7 @@ Python 3.8+            	 Core programming language
 Scikit-learn	           Machine Learning model
 Pandas & NumPy	         Data preprocessing
 Streamlit	               Web app framework
+
+👤 Author
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Hari Priya Burada
