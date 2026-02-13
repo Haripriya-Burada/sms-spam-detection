@@ -8,13 +8,13 @@ Built using Python, Scikit-learn, and Streamlit, the app leverages TF-IDF Vector
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 https://sms-spam-detection-f88px2jj8bjuzfrzcurvdj.streamlit.app/
 
-🚀 Features
+🚀 Features 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-✨ Classifies text messages as Spam or Ham instantly
-🧠 Trained using TF-IDF + Multinomial Naive Bayes
-📊 Achieves 97% accuracy on real-world SMS datasets
-💻 Simple, elegant Streamlit web interface
-⚡ Fast, lightweight, and easy to deploy
+- ✨ Classifies text messages as Spam or Ham instantly
+- 🧠 Trained using TF-IDF + Multinomial Naive Bayes
+- 📊 Achieves 97% accuracy on real-world SMS datasets
+- 💻 Simple, elegant Streamlit web interface
+- ⚡ Fast, lightweight, and easy to deploy
 
 🧠 How It Works
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
